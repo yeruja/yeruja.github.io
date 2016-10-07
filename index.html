@@ -235,6 +235,138 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/07/Response文件下载/" itemprop="url">
+                  Response文件下载
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-07T16:21:04+08:00" content="2016-10-07">
+              2016-10-07
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>public class ResponseTest_03 extends HttpServlet {
+
+    private static final long serialVersionUID = 1L;
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        // 通过路径得到一个输入流(src下的文件)
+        String path = this.getServletContext().getRealPath(&quot;/WEB-INF/classes/pic.jpg&quot;);
+        FileInputStream fis = new FileInputStream(path);
+
+        // 创建字节输出流
+        ServletOutputStream sos = response.getOutputStream();
+
+        // 得到要下载的文件名
+        String filename = path.substring(path.lastIndexOf(&quot;\\&quot;) + 1);
+
+        // 设置文件名的编码
+        filename = URLEncoder.encode(filename, &quot;utf-8&quot;);
+
+        // 告知客户端要下载文件
+        response.setHeader(&quot;content-disposition&quot;, &quot;attchment;filename=&quot; + filename);
+        response.setHeader(&quot;content-type&quot;, &quot;image/jpeg&quot;);
+
+        // 执行输出操作
+        int len = 1;
+        byte[] b = new byte[1024];
+        while((len = fis.read(b)) != -1) {
+            sos.write(b, 0, len);
+        }
+
+        sos.close();
+
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
+
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/24/hexo-第一篇文章记录/" itemprop="url">
                   hexo 第一篇博客记录
                 </a>
@@ -471,7 +603,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
