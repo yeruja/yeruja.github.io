@@ -84,16 +84,31 @@
 
 
 
-<meta name="description" content="123456789101112131415161718192021222324252627282930313233343536373839public class ResponseTest_03 extends HttpServlet &amp;#123;		private static final long serialVersionUID = 1L;	protected void doGet(Http">
+<meta name="description" content="一、ServletContext
+1、生命周期：当Web应用被加载进容器时创建代表整个web应用的ServletContext对象，当服务器关闭或Web应用被移除时，ServletContext对象跟着销毁。
+2、作用范围：整个Web应用。
+3、作用：
+a)在不同Servlet 之间转发
+this.getServletContext().getRequestDispatcher(“/servlet">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Response文件下载">
-<meta property="og:url" content="http://yoursite.com/2016/10/07/Response文件下载/index.html">
+<meta property="og:title" content="JAVA 四大域对象总结">
+<meta property="og:url" content="http://yoursite.com/2016/10/10/JAVA 四大域对象总结/index.html">
 <meta property="og:site_name" content="Ruja Ye">
-<meta property="og:description" content="123456789101112131415161718192021222324252627282930313233343536373839public class ResponseTest_03 extends HttpServlet &amp;#123;		private static final long serialVersionUID = 1L;	protected void doGet(Http">
-<meta property="og:updated_time" content="2016-10-07T11:22:26.677Z">
+<meta property="og:description" content="一、ServletContext
+1、生命周期：当Web应用被加载进容器时创建代表整个web应用的ServletContext对象，当服务器关闭或Web应用被移除时，ServletContext对象跟着销毁。
+2、作用范围：整个Web应用。
+3、作用：
+a)在不同Servlet 之间转发
+this.getServletContext().getRequestDispatcher(“/servlet">
+<meta property="og:updated_time" content="2016-10-10T06:20:39.326Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Response文件下载">
-<meta name="twitter:description" content="123456789101112131415161718192021222324252627282930313233343536373839public class ResponseTest_03 extends HttpServlet &amp;#123;		private static final long serialVersionUID = 1L;	protected void doGet(Http">
+<meta name="twitter:title" content="JAVA 四大域对象总结">
+<meta name="twitter:description" content="一、ServletContext
+1、生命周期：当Web应用被加载进容器时创建代表整个web应用的ServletContext对象，当服务器关闭或Web应用被移除时，ServletContext对象跟着销毁。
+2、作用范围：整个Web应用。
+3、作用：
+a)在不同Servlet 之间转发
+this.getServletContext().getRequestDispatcher(“/servlet">
 
 
 
@@ -114,9 +129,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/10/07/Response文件下载/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/10/10/JAVA 四大域对象总结/"/>
 
-  <title> Response文件下载 | Ruja Ye </title>
+  <title> JAVA 四大域对象总结 | Ruja Ye </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -236,7 +251,7 @@
             
             
               
-                Response文件下载
+                JAVA 四大域对象总结
               
             
           </h1>
@@ -248,8 +263,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-07T16:21:04+08:00" content="2016-10-07">
-              2016-10-07
+            <time itemprop="dateCreated" datetime="2016-10-10T14:19:29+08:00" content="2016-10-10">
+              2016-10-10
             </time>
           </span>
 
@@ -276,7 +291,55 @@
       
 
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">public class ResponseTest_03 extends HttpServlet &#123;</div><div class="line">	</div><div class="line">	private static final long serialVersionUID = 1L;</div><div class="line"></div><div class="line">	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</div><div class="line"></div><div class="line">		// 通过路径得到一个输入流(src下的文件)</div><div class="line">		String path = this.getServletContext().getRealPath(&quot;/WEB-INF/classes/pic.jpg&quot;);</div><div class="line">		FileInputStream fis = new FileInputStream(path);</div><div class="line">		</div><div class="line">		// 创建字节输出流</div><div class="line">		ServletOutputStream sos = response.getOutputStream();</div><div class="line">		</div><div class="line">		// 得到要下载的文件名</div><div class="line">		String filename = path.substring(path.lastIndexOf(&quot;\\&quot;) + 1);</div><div class="line">		</div><div class="line">		// 设置文件名的编码</div><div class="line">		filename = URLEncoder.encode(filename, &quot;utf-8&quot;);</div><div class="line">		</div><div class="line">		// 告知客户端要下载文件</div><div class="line">		response.setHeader(&quot;content-disposition&quot;, &quot;attchment;filename=&quot; + filename);</div><div class="line">		response.setHeader(&quot;content-type&quot;, &quot;image/jpeg&quot;);</div><div class="line">		</div><div class="line">		// 执行输出操作</div><div class="line">		int len = 1;</div><div class="line">		byte[] b = new byte[1024];</div><div class="line">		while((len = fis.read(b)) != -1) &#123;</div><div class="line">			sos.write(b, 0, len);</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		sos.close();</div><div class="line">		</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</div><div class="line">		doGet(request, response);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <p>一、ServletContext</p>
+<p>1、生命周期：当Web应用被加载进容器时创建代表整个web应用的ServletContext对象，当服务器关闭或Web应用被移除时，ServletContext对象跟着销毁。</p>
+<p>2、作用范围：整个Web应用。</p>
+<p>3、作用：</p>
+<p>a)在不同Servlet 之间转发</p>
+<p>this.getServletContext().getRequestDispatcher(“/servlet/Demo10Servlet”).forward(request, response);</p>
+<p>方法执行结束，service就会返回到服务器，再由服务器去调用目标servlet，其中request会重新创建，并将之前的request的数据拷贝进去。</p>
+<p>b)读取资源文件。</p>
+<p>1、由于相对路径默认相对的是java虚拟机启动的目录，所以我们直接写相对路径将会是相对于tomcat/bin目录，所以是拿不到资源的。</p>
+<p>如果写成绝对路径，当项目发布到其他环境时，绝对路径就错了。</p>
+<p>2、为了解决这个问题ServletContext提供了：</p>
+<p>this.getServletContext().getRealPath(“/1.properties”)，给进一个资源的虚拟路径，将会返回该资源在当前环境下的真实路径。</p>
+<p>this.getServletContext().getResourceAsStream(“/1.properties”)，给一个资源的虚拟路径返回到该资源真实路径的流。</p>
+<p>3、当在非servlet下获取资源文件时，就没有ServletContext对象用了，此时只能用类加载器</p>
+<p>classLoader.getResourceAsStream(“../../1.properties”)，此方法利用类加载器直接将资源加载到内存中，有更新延迟的问题，</p>
+<p>以及如果文件太大，占用内存过大。</p>
+<p>classLoader.getResource(“../1.properties”).getPath()，直接返回资源的真实路径，没有更新延迟的问题。</p>
+<p>二、Request 域</p>
+<p>1、生命周期：在service 方法调用前由服务器创建，传入service方法。整个请求结束，request生命结束。</p>
+<p>2、作用范围：整个请求链（请求转发也存在）。</p>
+<p>3、作用：  在整个请求链中共享数据。最常用到：在Servlet 中处理好的数据交给Jsp显示，此时参数就可以放置在Request域中带过去。</p>
+<p>三、Session 域</p>
+<p>HttpSession 在服务器中，为浏览器创建独一无二的内存空间，在其中保存会话相关的信息。</p>
+<p>1、生命周期：在第一次调用 request.getSession() 方法时，服务器会检查是否已经有对应的session,如果没有就在内存  中创建一个session并返回。</p>
+<p>当一段时间内session没有被使用（默认为30分钟），则服务器会销毁该session。</p>
+<p>如果服务器非正常关闭（强行关闭），没有到期的session也会跟着销毁。</p>
+<p>如果调用session提供的invalidate（） ，可以立即销毁session。</p>
+<p>注意：服务器正常关闭，再启动，Session对象会进行钝化和活化操作。同时如果服务器钝化的时间在session 默认销毁时间之内，</p>
+<p>则活化后session还是存在的。否则Session不存在。  如果JavaBean 数据在session钝化时，没有实现Serializable 则当Session活化时，会消失。</p>
+<p>2、作用范围：一次会话。</p>
+<p>四、PageContext 域</p>
+<p>1、生命周期：当对JSP的请求时开始，当响应结束时销毁。</p>
+<p>2、作用范围：整个JSP页面，是四大作用域中最小的一个。</p>
+<p>作用：</p>
+<p>（1）获取其它八大隐式对象，可以认为是一个入口对象。</p>
+<p>（2）获取其所有域中的数据</p>
+<p>pageContext 操作所有域中属性的方法</p>
+<p>public java.lang.Object getAttribute(java.lang.String name,int scope)</p>
+<p>public void setAttribute(java.lang.String name, java.lang.Object value,int scope)</p>
+<p>public void removeAttribute(java.lang.String name,int scope)</p>
+<p>pageContext 中代表域的常量</p>
+<p>PageContext.APPLICATION_SCOPE</p>
+<p>PageContext.SESSION_SCOPE</p>
+<p>PageContext.REQUEST_SCOPE</p>
+<p>PageContext.PAGE_SCOPE</p>
+<p>findAttribute方法,在四大域中搜寻属性，搜寻的顺序是page域、request域、session域、application域，</p>
+<p>从小域到大域开始搜索，如果搜索到就直接获取该值，如果所有域中都找不到，返回一个null(与el表达式不同，此处返回null，对网页是不友好的)</p>
+<p>（3）跳转到其他资源      其身上提供了forward和include方法，简化重定向和转发的操作</p>
+
       
     </div>
 
@@ -301,17 +364,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/24/hexo-第一篇文章记录/" rel="next" title="hexo 第一篇博客记录">
-                <i class="fa fa-chevron-left"></i> hexo 第一篇博客记录
+              <a href="/2016/10/08/web.xml 配置中classpath 与classpath的区别/" rel="next" title="web.xml配置中classpath:与classpath*:的区别">
+                <i class="fa fa-chevron-left"></i> web.xml配置中classpath:与classpath*:的区别
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/07/Response验证码/" rel="prev" title="Response验证码">
-                Response验证码 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
